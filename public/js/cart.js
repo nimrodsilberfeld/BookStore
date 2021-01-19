@@ -12,7 +12,7 @@ let totalMoney = 0
 
 const is_user_login = async () => {
 
-    const response = await fetch('http://localhost:3000/users/me', {
+    const response = await fetch('https://nim-book-store.herokuapp.com/users/me', {
         headers: { 'Authorization': sessionStorage.getItem('token') }
     })
         .then((res) => {
@@ -170,7 +170,7 @@ const renderCartBooks = async (url) => {
 
 const remove_book_from_user = async (bookId) => {
 
-    const response = await fetch(`http://localhost:3000/users/userBooks/${bookId}`, {
+    const response = await fetch(`https://nim-book-store.herokuapp.com/users/userBooks/${bookId}`, {
         method: "POST",
         headers: { 'Authorization': sessionStorage.getItem('token') }
     })
@@ -189,7 +189,7 @@ const remove_book_from_user = async (bookId) => {
 
 const remove_all_user_books = async () => {
 
-    const response = await fetch('http://localhost:3000/users/removeBooks', {
+    const response = await fetch('https://nim-book-store.herokuapp.com/users/removeBooks', {
         method: "POST",
         headers: { 'Authorization': sessionStorage.getItem('token') }
     }).then((res) => {
@@ -205,5 +205,5 @@ const remove_all_user_books = async () => {
 
 }
 
-renderCartBooks('http://localhost:3000/users/userBooks')
+renderCartBooks('https://nim-book-store.herokuapp.com/users/userBooks')
 

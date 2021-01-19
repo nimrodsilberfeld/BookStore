@@ -26,7 +26,7 @@ disconnect_button.addEventListener('click', () => {
     document.getElementById('dropdown').classList.remove('dropdown')
     isAdminLogin = false
     IsuserLogin = false
-    location.href = "http://localhost:3000/"
+    location.href = "https://nim-book-store.herokuapp.com/"
 })
 
 
@@ -36,7 +36,7 @@ const Does_User_Have_The_Book = async (bookId) => {
     if (!data) {
         return false
     }
-    const response = await fetch('http://localhost:3000/users/me', {
+    const response = await fetch('https://nim-book-store.herokuapp.com/users/me', {
         headers: { 'Authorization': sessionStorage.getItem('token') }
     })
         .then((res) => {
@@ -56,7 +56,7 @@ const Does_User_Have_The_Book = async (bookId) => {
 
 const remove_book_from_user = async (bookId, button) => {
 
-    const response = await fetch(`http://localhost:3000/users/userBooks/${bookId}`, {
+    const response = await fetch(`https://nim-book-store.herokuapp.com/users/userBooks/${bookId}`, {
         method: "POST",
         headers: { 'Authorization': sessionStorage.getItem('token') }
     })
@@ -78,7 +78,7 @@ const remove_book_from_user = async (bookId, button) => {
 
 
 const addBookToUser = async (bookId, button) => {
-    const response = await fetch(`http://localhost:3000/users/addBook/${bookId}`, {
+    const response = await fetch(`https://nim-book-store.herokuapp.com/users/addBook/${bookId}`, {
         method: 'POST',
         headers: {
             'Authorization': sessionStorage.getItem('token')
@@ -101,7 +101,7 @@ const addBookToUser = async (bookId, button) => {
 
 
 
-fetch(`http://localhost:3000/book/${bookId}`)
+fetch(`https://nim-book-store.herokuapp.com/book/${bookId}`)
     .then((res) => {
         if (res.ok) {
             return res.json()
