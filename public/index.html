@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Book-store</title>
+</head>
+
+<body>
+    <section>
+        <div class="title">
+            <a id="title" href="./index.html">
+                <h1>Book Store <img class="glow" id="books_img" src="./img/books.png" alt=""></h1>
+            </a>
+            <div class="nav_bar">
+                <div class="search_bar">
+                    <input type="text" placeholder="Search Book" id="search_input">
+                </div>
+                <div class="shopping_cart">
+                    <div class="add_book">
+                        <button id="addBook_button">Add book!</button>
+                    </div>
+                    <div id="dropdown">
+                        <a href="" id="login_button">Login</a>
+                        <div class="dropdown-content">
+                            <a href="#" id="disconnect_button">Disconnect</a>
+                        </div>
+                    </div>
+                    <img src="./img/down-arrow.png" id="down_arrow" alt="">
+                    <a href="" id="shopping_cart_button">
+                        <img src="./img/shopping-cart.png" alt="shopping-cart">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="section2">
+        <div id="books">
+            <div class="boxLoading"></div>
+        </div>
+    </section>
+
+
+    <div id="id01" class="modal">
+        <form class="modal-content animate">
+            <div class="imgcontainer">
+                <span class="close" title="Close Modal">&times;</span>
+            </div>
+
+            <div class="container">
+                <label for="uname"><b>Email</b></label>
+                <input type="email" placeholder="Enter Email" name="uname" class="modal_input" id="login_email_input"
+                    required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" class="modal_input"
+                    id="login_password_input" required>
+
+                <button type="submit" id="login_button">Login</button>
+            </div>
+            <p class="error_message">Somthing went wrong</p>
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                    class="cancelbtn">Cancel</button>
+                <span class="psw"> <button id="signUp_button">Sign Up!</button></span>
+            </div>
+        </form>
+    </div>
+
+    <div id="id02" class="modal">
+        <form class="modal-content signUp_modal animate">
+            <div class="imgcontainer">
+                <span class="close" title="Close Modal"
+                    onclick="document.getElementById('id02').style.display='none'">&times;</span>
+            </div>
+
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" class="modal_input sign_name_input"
+                    required>
+
+                <label for="email"><b>Email</b> </label>
+                <input type="email" placeholder="Enter Email" class="modal_input sign_email_input" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Minimum 7 letters" name="psw"
+                    class="modal_input sign_password_input" required>
+
+                <button type="submit" id="signMeUp_button">Sign me up</button>
+            </div>
+            <p class="error_message_signUp">Somthing went wrong</p>
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id02').style.display='none'"
+                    class="cancelbtn">Cancel</button>
+            </div>
+        </form>
+    </div>
+    <div id="welcome_card" class="animate">
+        <div class="greed_card">
+            <h1 id="welcome"></h1>
+        </div>
+    </div>
+    <div id="id03" class="modal">
+        <form class="modal-content-addbook add_book_modal animate">
+            <div class="imgcontainer">
+                <span class="close" title="Close Modal"
+                    onclick="document.getElementById('id03').style.display='none'">&times;</span>
+            </div>
+
+            <div class="container">
+                <label><b>Book Name</b></label>
+                <input type="text" placeholder="Enter Book Name" class="modal_input book_name_input" required>
+
+                <label><b>Book Author</b> </label>
+                <input type="text" placeholder="Enter Author" class="modal_input book_author_input" required>
+
+                <label><b>Book Price</b></label>
+                <input type="text" placeholder="Enter Price" class="modal_input book_price_input" required>
+
+                <label><b>Book cover</b></label>
+                <input type="url" placeholder="Enter url" class="modal_input book_cover_input" required>
+
+
+                <label><b>Book Description</b></label>
+                <input type="text" placeholder="What's the story about" class="modal_input book_description_input"
+                    required>
+
+                <label><b>Publish date</b></label>
+                <input type="text" placeholder="example: September 14th 2008" class="modal_input book_publish_input"
+                    required>
+                <button type="submit" id="add_book_button">Add Book</button>
+
+            </div>
+            <p class="error_message_signUp">Somthing went wrong</p>
+
+        </form>
+    </div>
+
+    <div id="id04" class="modal">
+        <form class="modal-content-addbook edit_book_modal animate">
+            <div class="imgcontainer">
+                <span class="close" title="Close Modal"
+                    onclick="document.getElementById('id04').style.display='none'">&times;</span>
+            </div>
+
+            <div class="container">
+                <label><b>Book Name</b></label>
+                <input type="text" placeholder="Enter Book Name" class="modal_input edit_book_name_input" required>
+
+                <label><b>Book Author</b> </label>
+                <input type="text" placeholder="Enter Author" class="modal_input edit_book_author_input" required>
+
+                <label><b>Book Price</b></label>
+                <input type="text" placeholder="Enter Price" class="modal_input edit_book_price_input" required>
+
+                <label><b>Book cover</b></label>
+                <input type="url" placeholder="Enter url" class="modal_input edit_book_cover_input" required>
+
+                <label><b>Book Description</b></label>
+                <input type="text" placeholder="What's the story about" class="modal_input edit_book_description_input"
+                    required>
+
+                <label><b>Publish date</b></label>
+                <input type="text" placeholder="example: September 14th 2008"
+                    class="modal_input edit_book_publish_input" required>
+
+                <button type="submit" id="update_book_button">Update Book</button>
+            </div>
+            <p class="error_message_signUp">Somthing went wrong</p>
+
+        </form>
+    </div>
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

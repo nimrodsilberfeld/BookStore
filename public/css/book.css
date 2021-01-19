@@ -1,0 +1,95 @@
+.nav_bar {
+    justify-content: flex-end
+}
+
+#book {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 77%;
+}
+
+.OnebookName {
+    max-width: 350px;
+}
+
+.OnebookAuthor {
+    font-weight: lighter;
+    text-decoration: underline;
+}
+
+.CoverImg {
+    align-self: center;
+    width: 300px;
+    height: 350px;
+    margin-bottom: 15px;
+}
+
+.OneBookInfo {
+    align-self: flex-start;
+}
+
+.OnebookDescription {
+    max-width: 380px;
+    margin-bottom: 20px;
+    white-space: pre-line;
+}
+
+.OnebookPrice {
+    margin-bottom: 30px;
+}
+
+.imageAndButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 30px;
+}
+
+#add_Button {
+    background-color: transparent;
+    border: 1px solid black;
+    color: black;
+    padding: 16px 32px;
+    width: 200px;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+#add_Button:hover {
+    background-color: black;
+    color: white;
+}
+
+@media(max-width: 768px) {
+    #book {
+        width: 100%;
+        flex-direction: column;
+        /* justify-content: center;
+        justify-items: center; */
+    }
+    .imageAndButton {
+        margin-right: 0;
+    }
+    .CoverImg {
+        width: 200px;
+        height: 250px;
+    }
+    .OneBookInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .OnebookPrice {
+        align-self: center;
+    }
+    .OnebookDescription {
+        width: 95%;
+       margin-left: 5px;
+    }
+    
+}

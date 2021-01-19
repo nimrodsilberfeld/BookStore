@@ -1,0 +1,434 @@
+body {
+    background-color: #f4f3ee;
+}
+
+#section2 {
+    /* background-color: #f8edeb; */
+    padding-top: 140px;
+}
+
+.boxLoading {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    margin: auto;
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+.bookImg {
+    opacity: 1;
+    width: 100%;
+    height: 350px;
+    transition: .5s ease;
+    /* border-radius: 7px; */
+}
+
+.bookCoverDiv {
+    height: 350px;
+}
+
+.paper_roll {
+    position: relative;
+    /* z-index: 2; */
+    width: 135px;
+    height: 138px;
+    object-fit: cover;
+    object-position: 20px 25px;
+    top: -143px;
+    left: 131px;
+}
+
+.bookImg:hover {
+    opacity: 0.3;
+}
+
+#books {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    margin-left: 14px;
+    padding-top: 20px;
+}
+
+.book {
+    flex: 0 0 265px;
+    width: 265px;
+    /* margin: 10px; */
+    margin-right: 25px;
+}
+
+.bookName {
+    display: block;
+    position: relative;
+    top: -8%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.bookAuthor {
+    display: block;
+    position: relative;
+    top: -8%;
+    text-align: center;
+    font-size: 20px;
+}
+
+.bookPrice {
+    display: block;
+    position: relative;
+    top: -8%;
+    text-align: center;
+    font-size: 20px;
+}
+
+.middle {
+    display: flex;
+    flex-direction: row;
+    transition: .5s ease;
+    opacity: 0;
+    position: relative;
+    top: -20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.book:hover .middle {
+    opacity: 1;
+}
+
+.book:hover .bookImg {
+    opacity: 0.3;
+}
+
+.book:hover .paper_roll {
+    opacity: 0.3;
+}
+
+.text {
+    background-color: transparent;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    /* padding: 16px 32px; */
+}
+
+.text:hover {
+    background-color: black;
+    color: white;
+}
+
+/*  !!!!!!!!!!!!!!!!!!!!!!  MODAL!!!!!!!!! */
+
+/* Full-width input fields */
+
+.modal_input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+
+button {
+    background-color: #17a288;
+    color: white;
+    /* padding: 10px 18px; */
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+.container button {
+    padding: 10px 18px;
+}
+
+span.psw {
+    float: right;
+    /* padding-top: 16px; */
+}
+
+/* The Modal (background) */
+
+#signUp_button {
+    padding-top: 10px 18px;
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 40;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 150%;
+    /* Full height */
+    /* overflow: auto; */
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 30%;
+    /* Could be more or less, depending on screen size */
+}
+
+.modal-content-addbook {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 50%;
+    /* Could be more or less, depending on screen size */
+}
+
+.error_message {
+    color: red;
+    text-align: center;
+    display: none;
+}
+
+.error_message_signUp {
+    color: red;
+    text-align: center;
+    display: none;
+}
+
+/* The Close Button (x) */
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+/* CLOSE ZOOM */
+
+.animate-cloze {
+    -webkit-animation: animatezoom-close 0.6s;
+    animation: animatezoom-close 0.6s
+}
+
+#welcome_card {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 40;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+.greed_card {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    font-size: 20px;
+    width: 350px;
+    padding: 80px;
+    text-align: center;
+    border-radius: 7px;
+}
+
+#welcome {
+    font-family: 'Heebo', sans-serif !important;
+}
+
+#id03 {
+    position: fixed;
+    z-index: 40;
+    top: -120px;
+}
+
+#id04 {
+    position: fixed;
+    z-index: 40;
+    top: -120px;
+}
+
+.book_description_input {
+    /* white-space: pre-line; */
+    max-height: 100px;
+}
+
+@-webkit-keyframes animatezoom-close {
+    from {
+        -webkit-transform: scale(1)
+    }
+    to {
+        -webkit-transform: scale(0)
+    }
+}
+
+@keyframes animatezoom-close {
+    from {
+        transform: scale(1)
+    }
+    to {
+        transform: scale(0)
+    }
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Change styles for span and cancel button on extra small screens */
+
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+@media(max-width: 768px) {
+    #books {
+        margin-left: 0;
+        justify-content: space-around;
+    }
+    .book {
+        flex: 0 0 150px;
+        margin-right: 0;
+    }
+    .bookCoverDiv {
+        height: 250px;
+    }
+    .bookImg {
+        width: 100%;
+        height: 250px;
+    }
+    .paper_roll {
+        display: none;
+    }
+    .text {
+        font-size: 15px;
+    }
+    .bookName {
+        font-size: 15px;
+    }
+    .bookAuthor {
+        font-size: 15px;
+    }
+    .bookPrice {
+        font-size: 15px;
+    }
+    .modal-content {
+        width: 70%;
+    }
+}

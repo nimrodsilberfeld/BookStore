@@ -1,0 +1,132 @@
+.shopping_cart_title {
+    color: #888888;
+    border-bottom: 3px solid black;
+    margin-bottom: 16px;
+    margin-left: 10px;
+    padding: 16px 0;
+}
+
+body {
+    background-color: #eee2df;
+}
+
+.cart_nav {
+    display: flex;
+}
+
+.books_cart {
+    margin-left: 10px;
+}
+
+.priceAndTrash {
+    display: flex;
+}
+
+.cart_nav button {
+    color: black;
+    background-color: #d7b9d5;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 36px;
+    border-bottom: 3px solid #eeeeee;
+}
+
+.cart_nav button:hover {
+    transform: scale(1.05);
+}
+
+.nav_bar {
+    justify-content: flex-end
+}
+
+.items_header {
+    border-bottom: 3px solid black;
+    margin-bottom: 16px;
+    margin-left: 10px;
+    padding: 16px 0;
+}
+
+.bag_img {
+    width: 30px;
+    height: 30px;
+}
+
+.book_img {
+    width: 120px;
+    height: 120px;
+    /* margin-left: 40px; */
+    margin-right: 40px;
+    margin-bottom: 10px;
+}
+
+.book_cart {
+    margin-bottom: 30px;
+    display: flex;
+    position: relative;
+    left: 30px;
+    border-bottom: 3px solid #c2bbbb;
+    max-width: 800px;
+}
+
+.book_cart p {
+    margin-left: 20px;
+    align-self: center;
+    font-size: 35px;
+}
+
+.book_info {
+    justify-content: flex-start;
+    width: 350px;
+}
+
+.trash {
+    width: 30px;
+    height: 30px;
+    align-self: center;
+    margin-left: 60px;
+}
+
+.trash:hover {
+    transform: scale(1.1);
+    animation: example 0.3s linear 0s 1 normal forwards
+}
+
+@keyframes example {
+    from {
+        color: black;
+    }
+    to {
+        filter: invert(16%) sepia(99%) saturate(6491%) hue-rotate(6deg) brightness(101%) contrast(120%);
+    }
+}
+
+@media(max-width: 768px) {
+    .cart_nav {
+        display: block;
+    }
+    .books_cart {
+        margin-left: 0;
+    }
+    .book_cart {
+        flex-direction: column;
+        left: 0;
+    }
+    .book_img {
+        margin-left: 0;
+        margin-right: 0;
+        align-self: center;
+    }
+    .book_info {
+        align-self: center;
+    }
+    .priceAndTrash {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .trash {
+        margin-left: 0;
+    }
+    .book_cart p {
+        margin-left: 0;
+    }
+}
