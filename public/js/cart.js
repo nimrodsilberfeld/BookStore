@@ -49,7 +49,7 @@ close_button.addEventListener('click', () => {
 })
 
 back_to_shopping_button.addEventListener('click', () => {
-    location.href = "http://localhost:3000"
+    location.href = "https://nim-book-store.herokuapp.com/"
 })
 
 proceedOrder.addEventListener('click', () => {
