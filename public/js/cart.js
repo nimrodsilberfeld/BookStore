@@ -1,3 +1,4 @@
+let url = "http://localhost:3000"
 const proceedOrder = document.getElementById('proceed_button')
 const purchase_button = document.querySelector('.button-cta')
 const paid_message = document.getElementById('paid')
@@ -9,10 +10,41 @@ const total = document.getElementById('total_Money')
 let totalMoney = 0
 
 
+async function LogOutUser() {
+
+    const response = await fetch(url + "/users/logout", {
+        method: "POST",
+        headers: {
+            'Authorization': sessionStorage.getItem('token')
+        }
+    }).then((res) => {
+        if (res.ok) {
+            console.log("User logout")
+        } else {
+            throw new Error(res.status)
+        }
+    }).catch((err) => {
+        console.log(err)
+    })
+    return response
+}
+
+disconnect_button.addEventListener('click', () => {
+    LogOutUser().then((res) => {
+        console.log(res)
+    }).catch((err) => {
+        console.log(err)
+    })
+    sessionStorage.clear()
+    document.getElementById('down_arrow').style.display = "none"
+    document.getElementById('dropdown').classList.remove('dropdown')
+    location.href = url
+})
+
 
 const is_user_login = async () => {
 
-    const response = await fetch('https://nim-book-store.herokuapp.com/users/me', {
+    const response = await fetch(url + '/users/me', {
         headers: { 'Authorization': sessionStorage.getItem('token') }
     })
         .then((res) => {
@@ -49,7 +81,7 @@ close_button.addEventListener('click', () => {
 })
 
 back_to_shopping_button.addEventListener('click', () => {
-    location.href = "https://nim-book-store.herokuapp.com/"
+    location.href = url
 })
 
 proceedOrder.addEventListener('click', () => {
@@ -170,7 +202,7 @@ const renderCartBooks = async (url) => {
 
 const remove_book_from_user = async (bookId) => {
 
-    const response = await fetch(`https://nim-book-store.herokuapp.com/users/userBooks/${bookId}`, {
+    const response = await fetch(url + `/users/userBooks/${bookId}`, {
         method: "POST",
         headers: { 'Authorization': sessionStorage.getItem('token') }
     })
@@ -189,7 +221,7 @@ const remove_book_from_user = async (bookId) => {
 
 const remove_all_user_books = async () => {
 
-    const response = await fetch('https://nim-book-store.herokuapp.com/users/removeBooks', {
+    const response = await fetch(url + '/users/removeBooks', {
         method: "POST",
         headers: { 'Authorization': sessionStorage.getItem('token') }
     }).then((res) => {
@@ -205,5 +237,5 @@ const remove_all_user_books = async () => {
 
 }
 
-renderCartBooks('https://nim-book-store.herokuapp.com/users/userBooks')
+renderCartBooks(url + '/users/userBooks')
 

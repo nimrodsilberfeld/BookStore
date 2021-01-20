@@ -33,6 +33,32 @@
         </div>
     </section>
 
+    <div id="id01" class="modal">
+        <form class="modal-content animate">
+            <div class="imgcontainer">
+                <span class="close" title="Close Modal" onclick="document.getElementById('id01').style.display='none'">&times;</span>
+            </div>
+
+            <div class="container">
+                <label for="uname"><b>Email</b></label>
+                <input type="email" placeholder="Enter Email" name="uname" class="modal_input" id="login_email_input"
+                    required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" class="modal_input"
+                    id="login_password_input" required>
+
+                <button type="submit" id="login_button">Login</button>
+            </div>
+            <p class="error_message">Somthing went wrong</p>
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                    class="cancelbtn">Cancel</button>
+                <span class="psw"> <button id="signUp_button">Sign Up!</button></span>
+            </div>
+        </form>
+    </div>
+
     <div id="book">
         <div class="imageAndButton">
             <img class="CoverImg" src="" alt="">

@@ -1,5 +1,7 @@
+let url = "http://localhost:3000"
 let bookId = sessionStorage.getItem("bookId")
 let imageAndButton = document.querySelector('.imageAndButton')
+const login_button = document.getElementById('login_button')
 let OneBookInfo = document.querySelector('.OneBookInfo')
 let OnebookDescription = document.querySelector('.OnebookDescription')
 let OnebookPublish = document.querySelector('.OnebookPublish')
@@ -10,6 +12,16 @@ let bookCover = document.querySelector('.CoverImg')
 let bookContainer = document.querySelector('#book')
 let add_Button = document.getElementById('add_Button')
 const nav_login_Button = document.getElementById('login_button')
+const loginForm = document.querySelector('.modal-content')
+const shopping_cart_button = document.getElementById('shopping_cart_button')
+let isAdminLogin = false
+let IsuserLogin = false
+
+login_button.addEventListener('click', (e) => {
+    e.preventDefault()
+    if (!sessionStorage.getItem('token'))
+        document.getElementById('id01').style.display = 'block'
+})
 
 if (sessionStorage.getItem("name")) {
     nav_login_Button.innerHTML = sessionStorage.getItem("name")
@@ -17,6 +29,18 @@ if (sessionStorage.getItem("name")) {
     document.getElementById('down_arrow').style.display = "inline-block"
     document.getElementById('dropdown').classList.add('dropdown')
 }
+
+
+
+shopping_cart_button.addEventListener('click', (e) => {
+    e.preventDefault()
+    // console.log(data)
+    if (sessionStorage.getItem('token')) {
+        location.href = url + "/cart.html"
+    } else {
+        document.getElementById('id01').style.display = 'block'
+    }
+})
 
 disconnect_button.addEventListener('click', () => {
     sessionStorage.clear()
@@ -26,7 +50,7 @@ disconnect_button.addEventListener('click', () => {
     document.getElementById('dropdown').classList.remove('dropdown')
     isAdminLogin = false
     IsuserLogin = false
-    location.href = "https://nim-book-store.herokuapp.com/"
+    location.href = url
 })
 
 
@@ -36,7 +60,7 @@ const Does_User_Have_The_Book = async (bookId) => {
     if (!data) {
         return false
     }
-    const response = await fetch('https://nim-book-store.herokuapp.com/users/me', {
+    const response = await fetch(url + "/users/me", {
         headers: { 'Authorization': sessionStorage.getItem('token') }
     })
         .then((res) => {
@@ -56,7 +80,7 @@ const Does_User_Have_The_Book = async (bookId) => {
 
 const remove_book_from_user = async (bookId, button) => {
 
-    const response = await fetch(`https://nim-book-store.herokuapp.com/users/userBooks/${bookId}`, {
+    const response = await fetch(url + `/users/userBooks/${bookId}`, {
         method: "POST",
         headers: { 'Authorization': sessionStorage.getItem('token') }
     })
@@ -78,7 +102,7 @@ const remove_book_from_user = async (bookId, button) => {
 
 
 const addBookToUser = async (bookId, button) => {
-    const response = await fetch(`https://nim-book-store.herokuapp.com/users/addBook/${bookId}`, {
+    const response = await fetch(url + `/users/addBook/${bookId}`, {
         method: 'POST',
         headers: {
             'Authorization': sessionStorage.getItem('token')
@@ -99,9 +123,64 @@ const addBookToUser = async (bookId, button) => {
 
 }
 
+async function LoginUser(url = '', data = {}) {
+
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    return response.json()
+}
+
+//sending login form Info
+loginForm.addEventListener('submit', (e) => {
+    isAdminLogin = false
+    IsuserLogin = false
+    e.preventDefault()
+    let userData = {
+        email: document.getElementById('login_email_input').value,
+        password: document.getElementById('login_password_input').value
+    }
+    console.log(userData)
+
+    LoginUser(url + '/admins/login', userData)
+        .then(data => {
+            isAdminLogin = true
+            sessionStorage.setItem("token", data.token)
+            sessionStorage.setItem("name", data.admin.name)
+            addBook_button.style.display = "block"
+            document.getElementById('id01').style.display = 'none'
+            location.reload()
+        })
+        .catch((err) => {
+            console.log(err)
+            error_message.style.display = "block"
+        })
+    if (!isAdminLogin) {
+        LoginUser(url + '/users/login', userData)
+            .then(data => {
+                sessionStorage.setItem("token", data.token)
+                sessionStorage.setItem("name", data.user.name)
+                IsuserLogin = true
+                document.getElementById('id01').style.display = 'none'
+                location.reload()
+            })
+            .catch((err) => {
+                console.log(err)
+                error_message.style.display = "block"
+            })
+    }
+    //renderBooks(allBookUrl)
+    document.getElementById('login_email_input').value = ""
+    document.getElementById('login_password_input').value = ""
+})
 
 
-fetch(`https://nim-book-store.herokuapp.com/book/${bookId}`)
+
+fetch(url + `/book/${bookId}`)
     .then((res) => {
         if (res.ok) {
             return res.json()

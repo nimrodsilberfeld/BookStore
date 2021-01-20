@@ -403,15 +403,22 @@ span.psw {
         justify-content: space-around;
     }
     .book {
+        flex: 0 0 125px;
+    }
+    #section2 {
+        padding-top: 100px;
+    }
+    .book {
         flex: 0 0 150px;
         margin-right: 0;
     }
     .bookCoverDiv {
-        height: 250px;
+        height: 180px;
     }
     .bookImg {
         width: 100%;
-        height: 250px;
+        height: 100%;
+        border-radius: 7px;
     }
     .paper_roll {
         display: none;

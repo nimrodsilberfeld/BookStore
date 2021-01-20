@@ -171,11 +171,17 @@ main {
 
 @media(max-width: 768px) {
     .title h1 {
-        font-size: 40px;
-        margin-bottom: 20px;
+        font-size: 30px;
+        margin-bottom: 0;
+    }
+    #books_img {
+        margin-top: 10px;
+        width: 35px;
+        height: 35px;
     }
     #search_input {
-        padding: 5px;
+        padding: 1px;
+        width: 80%;
     }
     .search_bar {
         margin-left: 11px;
