@@ -1,4 +1,5 @@
-let url = "http://localhost:3000"
+//let url = "http://localhost:3000"
+let url="https://nim-book-store.herokuapp.com"
 let bookId = sessionStorage.getItem("bookId")
 let imageAndButton = document.querySelector('.imageAndButton')
 const login_button = document.getElementById('login_button')

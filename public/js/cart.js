@@ -1,4 +1,5 @@
-let url = "http://localhost:3000"
+//let url = "http://localhost:3000"
+let url="https://nim-book-store.herokuapp.com"
 const proceedOrder = document.getElementById('proceed_button')
 const purchase_button = document.querySelector('.button-cta')
 const paid_message = document.getElementById('paid')
