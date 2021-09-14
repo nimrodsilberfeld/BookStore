@@ -34,7 +34,6 @@ bookSchema.virtual('users', {
 
 
 bookSchema.pre('remove', async function (next) {
-
     const book = this
     await book.populate('users').execPopulate()
     const userWithTheBook = book.users //return an array of users who hold the book

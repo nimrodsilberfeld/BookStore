@@ -1,9 +1,9 @@
 const booksContainer = document.querySelector('#books')
 //const url="http://localhost:3000"
-let url="https://nim-book-store.herokuapp.com"
+let url = "https://nim-book-store.herokuapp.com"
 // const allBookUrl = 'http://localhost:3000/books'
 //const allBookUrl = 'http://localhost:3000/books'
-const allBookUrl="https://nim-book-store.herokuapp.com/books"
+const allBookUrl = "https://nim-book-store.herokuapp.com/books"
 const addBook_button = document.getElementById('addBook_button')
 const searchInput = document.querySelector('#search_input')
 const closeButton = document.querySelector('.close')
@@ -31,7 +31,7 @@ searchInput.addEventListener('input', () => {
 
 update_book_button.addEventListener('click', (e) => {
     e.preventDefault()
-    
+
     let bookData = {
         bookName: document.querySelector('.edit_book_name_input').value,
         bookAuthor: document.querySelector('.edit_book_author_input').value,
@@ -85,7 +85,7 @@ shopping_cart_button.addEventListener('click', (e) => {
     e.preventDefault()
     // console.log(data)
     if (IsuserLogin || isAdminLogin) {
-        location.href = url+"/cart.html"
+        location.href = url + "/cart.html"
     } else {
         document.getElementById('id01').style.display = 'block'
     }
@@ -140,7 +140,7 @@ loginForm.addEventListener('submit', (e) => {
     }
     console.log(userData)
 
-    LoginUser(url+'/admins/login', userData)
+    LoginUser(url + '/admins/login', userData)
         .then(data => {
             isAdminLogin = true
             sessionStorage.setItem("token", data.token)
@@ -159,7 +159,7 @@ loginForm.addEventListener('submit', (e) => {
             error_message.style.display = "block"
         })
     if (!isAdminLogin) {
-        LoginUser(url+'/users/login', userData)
+        LoginUser(url + '/users/login', userData)
             .then(data => {
                 sessionStorage.setItem("token", data.token)
                 sessionStorage.setItem("name", data.user.name)
@@ -202,7 +202,7 @@ signUpForm.addEventListener('submit', (e) => {
         password: document.querySelector('.sign_password_input').value
     }
     console.log("New user ", newUserData)
-    postUser(url+'/users', newUserData)
+    postUser(url + '/users', newUserData)
         .then(data => {
             sessionStorage.setItem('token', data.token)
             sessionStorage.setItem("name", data.name)
@@ -252,7 +252,7 @@ async function LoginUser(url = '', data = {}) {
 
 async function LogOutUser() {
 
-    const response = await fetch(url+"/users/logout", {
+    const response = await fetch(url + "/users/logout", {
         method: "POST",
         headers: {
             'Authorization': sessionStorage.getItem('token')
@@ -271,7 +271,7 @@ async function LogOutUser() {
 
 
 const addBookToUser = async (bookId, button) => {
-    const response = await fetch(url+`/users/addBook/${bookId}`, {
+    const response = await fetch(url + `/users/addBook/${bookId}`, {
         method: 'POST',
         headers: {
             'Authorization': sessionStorage.getItem('token')
@@ -293,7 +293,7 @@ const addBookToUser = async (bookId, button) => {
 }
 
 const remove_book_from_store = async (bookId) => {
-    const response = await fetch(url+`/books/${bookId}`, {
+    const response = await fetch(url + `/books/${bookId}`, {
         method: "DELETE",
         headers: {
             'Authorization': sessionStorage.getItem('token'),
@@ -313,7 +313,7 @@ const remove_book_from_store = async (bookId) => {
 
 const add_book_to_store = async (data = {}) => {
 
-    const response = await fetch(url+'/book', {
+    const response = await fetch(url + '/book', {
         method: "POST",
         headers: {
             'Authorization': sessionStorage.getItem('token'),
@@ -333,9 +333,10 @@ const add_book_to_store = async (data = {}) => {
     return response
 }
 
+
 const update_book = async (id, data = {}) => {
 
-    const response = await fetch(url+`/books/${id}`, {
+    const response = await fetch(url + `/books/${id}`, {
         method: "PATCH",
         headers: {
             'Authorization': sessionStorage.getItem('token'),
@@ -362,7 +363,7 @@ const Does_User_Have_The_Book = async (bookId) => {
     if (!data) {
         return false
     }
-    const response = await fetch(url+'/users/me', {
+    const response = await fetch(url + '/users/me', {
         headers: { 'Authorization': sessionStorage.getItem('token') }
     })
         .then((res) => {
@@ -397,7 +398,7 @@ const is_user_login = async (url = '') => {
 }
 
 const is_admin_login = async () => {
-    const response = await fetch(url+'/admin/me', {
+    const response = await fetch(url + '/admin/me', {
         headers: { 'Authorization': sessionStorage.getItem('token') }
     })
         .then((res) => {
@@ -414,7 +415,7 @@ const is_admin_login = async () => {
     return response
 }
 
-is_user_login(url+'/users/me').then((data) => {
+is_user_login(url + '/users/me').then((data) => {
     isAdminLogin = false
     IsuserLogin = false
 
@@ -450,7 +451,7 @@ is_user_login(url+'/users/me').then((data) => {
 
 const remove_book_from_user = async (bookId, button) => {
 
-    const response = await fetch(url+`/users/userBooks/${bookId}`, {
+    const response = await fetch(url + `/users/userBooks/${bookId}`, {
         method: "POST",
         headers: { 'Authorization': sessionStorage.getItem('token') }
     })
@@ -502,7 +503,7 @@ const renderBooks = (AllBooksUrl, search) => {
                 img.addEventListener('click', () => {
                     console.log(book._id)
                     sessionStorage.setItem("bookId", book._id)
-                    location.href = url+"/book.html"
+                    location.href = url + "/book.html"
                 })
                 // if (!isAdminLogin) {
                 // }
